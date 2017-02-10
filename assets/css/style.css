@@ -1,0 +1,9 @@
+/* Definições gerais */
+.centered{
+    margin: 0 auto !important;
+    float: none !important;
+}
+.cabecalho-main{
+  text-align: center;
+  margin: 40px 0 40px 0;
+}
