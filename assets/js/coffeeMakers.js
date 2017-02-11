@@ -20,21 +20,30 @@ coffeeMakers.atualizarLista = function(){
   coffeeMakers.renderizarLista();
 }
 
+// REFATORAR ISSO!
 coffeeMakers.gerarLista = function(lista){
+  let pessoasAlocadas = [];
   for(let i=0; i<10; i++){
     let pessoaSorteada = coffeeMakers.sortear(lista);
 
     if(coffeeMakers.pessoasSorteadas.map(p => p.nome).includes(pessoaSorteada.nome)){
-      if(coffeeMakers.pessoasSorteadas.length == coffechallenge.pessoas.length){
+      if(pessoasAlocadas.length == coffechallenge.pessoas.length){ //Verifica se todos já estão alocados
         coffeeMakers.pessoasSorteadas.push(pessoaSorteada);
+        pessoasAlocadas = [];
+        pessoasAlocadas.push(pessoaSorteada);
       }
       else{
-        pessoaSorteada = coffeeMakers.sortear(lista.filter(p => JSON.parse(p).nome !== pessoaSorteada.nome));
+        pessoaSorteada = coffeeMakers.sortear(lista);
+        while(pessoasAlocadas.map(p => p.nome).includes(pessoaSorteada.nome)){
+          pessoaSorteada = coffeeMakers.sortear(lista);
+        }
         coffeeMakers.pessoasSorteadas.push(pessoaSorteada);
+        pessoasAlocadas.push(pessoaSorteada);
       }
     }
     else{
       coffeeMakers.pessoasSorteadas.push(pessoaSorteada);
+      pessoasAlocadas.push(pessoaSorteada);
     }
   }
 }
