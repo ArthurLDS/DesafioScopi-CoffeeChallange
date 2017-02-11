@@ -20,6 +20,7 @@
 
       <article class="panel panel-primary">
         <header class="panel-heading">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
           Cadastro de Pessoa
         </header>
         <article class="panel-body">
@@ -29,26 +30,30 @@
               <input type="text" id="txtNomePessoa" class="form-control" placeholder="Digite o nome">
             </article>
             <article class="form-group">
-              <a id="btnCadastrarPessoa" class="btn btn-success pull-right">Salvar</a>
+              <a id="btnCadastrarPessoa" class="btn btn-success pull-right">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Salvar
+              </a>
             </article>
           </form>
 
         </article>
       </article>
       <div class="alert alert-danger" id="alert-erro" role="alert" style="display: none;">
-        <span class="sr-only">Error:</span>
-        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        O nome já existe ou está vazio, tente novamente.
+        <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></i>
+        <spam></spam>
       </div>
 
 
       <article class="panel panel-primary">
         <header class="panel-heading">
+          <i class="fa fa-users" aria-hidden="true"></i>
           Pessoas cadastradas
         </header>
         <table class="table table-striped table-hover">
           <thead>
             <tr>
+              <th>Id </th>
               <th>Nome </th>
               <th> </th>
             </tr>
@@ -60,6 +65,11 @@
           </tbody>
         </table>
       </article>
+      <!--  --->
+      <a  href="coffeeMakersList.html" id="btn-gerar-coffeeMakers" class="btn btn-info btn-gerar-coffeeMakers">
+        <i class="fa fa-coffee" aria-hidden="true"></i>
+        GERAR COFFEE MAKERS
+      </a>
 
     </section>
 
@@ -69,5 +79,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="../assets/js/validacoes.js"></script>
   <script type="text/javascript" src="../assets/js/funcoes.js"></script>
+  <!--<script type="text/javascript" src="../assets/js/coffeeMakers.js"></script>-->
 </body>
 </html>
