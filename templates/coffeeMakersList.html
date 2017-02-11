@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Coffee Challange</title>
+  <title>Coffee challenge</title>
   <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <link rel="stylesheet" href="../assets/css/style.css"/>
@@ -14,13 +14,14 @@
       <header class="cabecalho-main">
         <h1>
           <i class="fa fa-coffee" aria-hidden="true"></i>
-          Coffee Challange
+          Coffee challenge
         </h1>
       </header>
 
       <article class="panel panel-primary">
         <header class="panel-heading">
-          Fazedores de café está semana!
+          <i class="fa fa-coffee" aria-hidden="true"></i>
+          Coffee Makers desta semana
         </header>
         <table class="table table-striped table-hover">
           <thead>
@@ -31,20 +32,15 @@
             </tr>
           </thead>
           <tbody id="listPessoasSorteadas">
-            <!--<tr>
-              <th>Segunda</td>
-              <td>Joe</td>
-              <td>Paul</td>
-            </tr>
-            <tr>
-              <th>Terça</td>
-              <td id="teste">Joe</td>
-              <td>Paul</td>
-            </tr>-->
 
           </tbody>
         </table>
       </article>
+
+      <a href="javascript:coffeeMakers.atualizarLista()" id="btn-gerar-coffeeMakers" class="btn btn-info btn-gerar-coffeeMakers">
+        <i class="fa fa-coffee" aria-hidden="true"></i>
+        GERAR COFFEE MAKERS
+      </a>
 
     </section>
 
@@ -55,5 +51,6 @@
   <script type="text/javascript" src="../assets/js/validacoes.js"></script>
   <script type="text/javascript" src="../assets/js/funcoes.js"></script>
   <script type="text/javascript" src="../assets/js/coffeeMakers.js"></script>
+
 </body>
 </html>
