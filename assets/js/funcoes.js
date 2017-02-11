@@ -19,8 +19,10 @@ coffeChallange.iniciar = function(){
 };
 
 coffeChallange.configurarBtns = function(){
-    coffeChallange.$btnCadastrarPessoa = $('#btnCadastrarPessoa');
+    coffeChallange.$btnCadastrarPessoa  = $('#btnCadastrarPessoa');
+    //coffeChallange.$btnGerarCoffeMakers =  $('#btn-gerar-coffeeMakers');
     coffeChallange.$btnCadastrarPessoa.click(coffeChallange.adicionar);
+    //coffeChallange.$btnGerarCoffeMakers.click(coffeeMakers.gerarLista);
 }
 
 coffeChallange.adicionar = function(){
@@ -40,7 +42,7 @@ coffeChallange.listarPessoas = function(){
 
 	for(var i in coffeChallange.pessoas){
 		let pessoa = JSON.parse(coffeChallange.pessoas[i]);
-    coffeChallange.listaPessoas.append("<tr><td>"+pessoa.nome+"</td><td><a href='javascript:coffeChallange.excluirPessoa("+i+")'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>");
+    coffeChallange.listaPessoas.append("<tr><th>"+i+"</th><td>"+pessoa.nome+"</td><td><a class='pull-right' href='javascript:coffeChallange.excluirPessoa("+i+")'><i class='fa fa-trash-o' aria-hidden='true'></i> Excluir</a></td></tr>");
 
 	}
 }

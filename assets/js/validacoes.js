@@ -21,7 +21,7 @@ validacao.validarCampoNome = function(){
   for(var i in coffeChallange.pessoas){
     if(JSON.parse(coffeChallange.pessoas[i]).nome === coffeChallange.$txtNome.val()){
       validacao.notificarErro(true);
-      alertaMsg.text("Este nome já existente!");
+      alertaMsg.text("Este nome já existe!");
       return false;
     }
   }
