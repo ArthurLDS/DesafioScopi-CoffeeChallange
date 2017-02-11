@@ -1,12 +1,26 @@
 /* Definições gerais */
+body{
+  background-color: #fbfbfb;
+  background-image: url(https://braziljs.org/styles/images/bg02.png), url(https://braziljs.org/styles/images/bg03.png), url(https://braziljs.org/styles/images/bg01.png);
+  background-position: top left,	bottom left,	top left;
+  background-size: 100% 6em,	0% 6em,	auto;
+  background-repeat: no-repeat,	no-repeat,	repeat;
+}
 .centered{
-    margin: 0 auto !important;
-    float: none !important;
+  margin: 0 auto !important;
+  float: none !important;
 }
 .cabecalho-main{
   text-align: center;
   margin: 40px 0 40px 0;
 }
 .table-hover>tbody>tr {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
+}
+.table a:not(.btn), .table a:not(.btn) {
+  text-decoration: none;
+}
+/* index styles */
+.btn-gerar-coffeeMakers{
+  width: 100%;
 }
