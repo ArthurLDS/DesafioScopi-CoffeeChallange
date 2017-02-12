@@ -6,31 +6,38 @@ $(function(){
 
 coffechallenge.iniciar = function(){
     coffechallenge.$txtNome = $('#txtNomePessoa');
+    coffechallenge.$listaPessoas = $("#listaPessoas");
+    coffechallenge.$contentPessoas = $("#content-pessoas");
 
-    let pessoas = localStorage.getItem("pessoas");
-    coffechallenge.pessoas = JSON.parse(pessoas);
-
-    if(coffechallenge.pessoas == null){
-      coffechallenge.pessoas = [];
-    }
-    coffechallenge.listaPessoas = $("#listaPessoas");
-    coffechallenge.listarPessoas();
     coffechallenge.configurarBtns();
+    coffechallenge.carregarPessoas();
+    coffechallenge.listarPessoas();
 };
 
+coffechallenge.carregarPessoas = function(){
+  let pessoas = localStorage.getItem("pessoas");
+  coffechallenge.pessoas = JSON.parse(pessoas);
+
+  validacao.validarListaPessoas();
+
+  if(coffechallenge.pessoas === null){
+    coffechallenge.pessoas = [];
+  }
+}
+
 coffechallenge.configurarBtns = function(){
+    coffechallenge.$btnGerarCoffeMakers = $("#btn-gerar-coffeeMakers");
     coffechallenge.$btnCadastrarPessoa  = $('#btnCadastrarPessoa');
-    //coffechallenge.$btnGerarCoffeMakers =  $('#btn-gerar-coffeeMakers');
     coffechallenge.$btnCadastrarPessoa.click(coffechallenge.adicionar);
-    //coffechallenge.$btnGerarCoffeMakers.click(coffeeMakers.gerarLista);
 }
 
 coffechallenge.adicionar = function(){
   if(validacao.validarCampoNome()){
-    let pessoa = JSON.stringify({
-          nome : coffechallenge.$txtNome.val()
-    });
+    let pessoa = JSON.stringify(
+      { nome : coffechallenge.$txtNome.val() }
+    );
 
+    coffechallenge.$txtNome.val("");
     coffechallenge.pessoas.push(pessoa);
     localStorage.setItem("pessoas", JSON.stringify(coffechallenge.pessoas));
     coffechallenge.listarPessoas();
@@ -38,11 +45,12 @@ coffechallenge.adicionar = function(){
 };
 
 coffechallenge.listarPessoas = function(){
-  coffechallenge.listaPessoas.html("");
+  validacao.validarListaPessoas();
 
+  coffechallenge.$listaPessoas.html("");
 	for(var i in coffechallenge.pessoas){
 		let pessoa = JSON.parse(coffechallenge.pessoas[i]);
-    coffechallenge.listaPessoas.append("<tr><td>"+i+"</td><td>"+pessoa.nome+"</td><td><a class='pull-right' href='javascript:coffechallenge.excluirPessoa("+i+")'><i class='fa fa-trash-o' aria-hidden='true'></i> Excluir</a></td></tr>");
+    coffechallenge.$listaPessoas.append("<tr><td>"+ eval(parseInt(i) + 1) +"</td><td>"+pessoa.nome+"</td><td><a class='pull-right' href='javascript:coffechallenge.excluirPessoa("+i+")'><i class='fa fa-trash-o' aria-hidden='true'></i> Excluir</a></td></tr>");
 
 	}
 }
@@ -61,5 +69,5 @@ coffechallenge.getIndicePessoa = function(pessoa){
       return i;
     }
   }
-  return -1;
+  return false;
 }
