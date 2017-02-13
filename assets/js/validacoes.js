@@ -3,6 +3,7 @@ var validacao = {}
 $(function(){
    validacao.$notificacaoNonePessoas = $('#notificacao-none-pessoas');
 });
+
 validacao.notificarErro = function(mostrar, mensagem){
   let alerta = $('#alert-erro');
   let alertaMsg = $('#alert-erro spam');
@@ -42,7 +43,7 @@ validacao.validarCampoNome = function(){
 }
 
 validacao.validarListaPessoas = function(){
-  let linkPageSorteio = "coffeeMakersList.html";
+  let linkPageSorteio = "sorteioCoffeeMakersList.html";
 
   if(coffechallenge.pessoas === null || coffechallenge.pessoas.length === 0 || coffechallenge.pessoas.length === ""){
     validacao.$notificacaoNonePessoas.show();
