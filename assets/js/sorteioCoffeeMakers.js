@@ -1,68 +1,68 @@
-var coffeeMakers = {};
+var sorteioCoffeeMakers = {};
 
 $(function(){
-  coffeeMakers.diasSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
-  coffeeMakers.alocacoes = [];
-  coffeeMakers.pessoasSorteadas = [];
-  coffeeMakers.$listaCoffeMakers = $('#listPessoasSorteadas');
-  coffeeMakers.renderizarLista();
+  sorteioCoffeeMakers.diasSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
+  sorteioCoffeeMakers.alocacoes = [];
+  sorteioCoffeeMakers.pessoasSorteadas = [];
+  sorteioCoffeeMakers.$listaCoffeMakers = $('#listPessoasSorteadas');
+  sorteioCoffeeMakers.renderizarLista();
 });
 
-coffeeMakers.sortear = function(lista){
+sorteioCoffeeMakers.sortear = function(lista){
   let numSorteado = Math.floor(Math.random() * lista.length);
   let pessoaSorteada = JSON.parse(lista[numSorteado]);
   return pessoaSorteada;
 }
 
-coffeeMakers.atualizarLista = function(){
-  coffeeMakers.$listaCoffeMakers.html("");
-  coffeeMakers.pessoasSorteadas = [];
-  coffeeMakers.renderizarLista();
+sorteioCoffeeMakers.atualizarLista = function(){
+  sorteioCoffeeMakers.$listaCoffeMakers.html("");
+  sorteioCoffeeMakers.pessoasSorteadas = [];
+  sorteioCoffeeMakers.renderizarLista();
 }
 
 // REFATORAR ISSO!
-coffeeMakers.gerarLista = function(lista){
+sorteioCoffeeMakers.gerarListaPessoasSorteadas = function(lista){
   let pessoasAlocadas = [];
   for(let i=0; i<10; i++){
-    let pessoaSorteada = coffeeMakers.sortear(lista);
+    let pessoaSorteada = sorteioCoffeeMakers.sortear(lista);
 
-    if(coffeeMakers.pessoasSorteadas.map(p => p.nome).includes(pessoaSorteada.nome)){
+    if(sorteioCoffeeMakers.pessoasSorteadas.map(p => p.nome).includes(pessoaSorteada.nome)){
       if(pessoasAlocadas.length == coffechallenge.pessoas.length){ //Verifica se todos já estão alocados
-        coffeeMakers.pessoasSorteadas.push(pessoaSorteada);
+        sorteioCoffeeMakers.pessoasSorteadas.push(pessoaSorteada);
         pessoasAlocadas = [];
         pessoasAlocadas.push(pessoaSorteada);
       }
       else{
-        pessoaSorteada = coffeeMakers.sortear(lista);
+        pessoaSorteada = sorteioCoffeeMakers.sortear(lista);
         while(pessoasAlocadas.map(p => p.nome).includes(pessoaSorteada.nome)){
-          pessoaSorteada = coffeeMakers.sortear(lista);
+          pessoaSorteada = sorteioCoffeeMakers.sortear(lista);
         }
-        coffeeMakers.pessoasSorteadas.push(pessoaSorteada);
+        sorteioCoffeeMakers.pessoasSorteadas.push(pessoaSorteada);
         pessoasAlocadas.push(pessoaSorteada);
       }
     }
     else{
-      coffeeMakers.pessoasSorteadas.push(pessoaSorteada);
+      sorteioCoffeeMakers.pessoasSorteadas.push(pessoaSorteada);
       pessoasAlocadas.push(pessoaSorteada);
     }
   }
 }
 
-coffeeMakers.organizarPorTurno = function(turno){
+sorteioCoffeeMakers.organizarPessoasSorteadasPorTurno = function(turno){
   let lista = [];
 
   switch (turno) {
     case "manha":
       for(let i=0; i<10; i++){
         if(i%2===0 || i===0){
-          lista.push(coffeeMakers.pessoasSorteadas[i]);
+          lista.push(sorteioCoffeeMakers.pessoasSorteadas[i]);
         }
       }
     break;
     case "tarde":
       for(let i=0; i<10; i++){
         if(i%2!==0 && i!==0){
-          lista.push(coffeeMakers.pessoasSorteadas[i]);
+          lista.push(sorteioCoffeeMakers.pessoasSorteadas[i]);
         }
       }
     break;
@@ -70,16 +70,16 @@ coffeeMakers.organizarPorTurno = function(turno){
   return lista;
 }
 
-coffeeMakers.renderizarLista = function(){
-  coffeeMakers.gerarLista(coffechallenge.pessoas);
-  let pessoasManha = coffeeMakers.organizarPorTurno("manha");
-  let pessoasTarde = coffeeMakers.organizarPorTurno("tarde");
+sorteioCoffeeMakers.renderizarLista = function(){
+  sorteioCoffeeMakers.gerarListaPessoasSorteadas(coffechallenge.pessoas);
+  let pessoasManha = sorteioCoffeeMakers.organizarPessoasSorteadasPorTurno("manha");
+  let pessoasTarde = sorteioCoffeeMakers.organizarPessoasSorteadasPorTurno("tarde");
 
   for(let i=0; i<5; i++){
     let pessoaManha = pessoasManha[i];
     let pessoaTarde = pessoasTarde[i];
 
-    coffeeMakers.$listaCoffeMakers.append("<tr><th>" + coffeeMakers.diasSemana[i] + "</th>  <td>" + pessoaManha.nome + "</td>  <td>" + pessoaTarde.nome + "</td></tr>");
+    sorteioCoffeeMakers.$listaCoffeMakers.append("<tr><th>" + sorteioCoffeeMakers.diasSemana[i] + "</th>  <td>" + pessoaManha.nome + "</td>  <td>" + pessoaTarde.nome + "</td></tr>");
   }
 
 }

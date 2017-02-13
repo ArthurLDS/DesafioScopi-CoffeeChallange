@@ -16,7 +16,7 @@ validacao.notificarErro = function(mostrar, mensagem){
     }, 8000);
   }
   else {
-    alerta.hide();
+    alerta.fadeOut("slow");
   }
 }
 
