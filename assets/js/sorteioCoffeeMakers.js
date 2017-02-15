@@ -2,7 +2,7 @@ var sorteioCoffeeMakers = {};
 
 $(function(){
   sorteioCoffeeMakers.diasSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
-  sorteioCoffeeMakers.alocacoes = [];
+  sorteioCoffeeMakers.pessoasAlocadas  = [];
   sorteioCoffeeMakers.pessoasSorteadas = [];
   sorteioCoffeeMakers.$listaCoffeMakers = $('#listPessoasSorteadas');
   sorteioCoffeeMakers.renderizarLista();
@@ -22,30 +22,32 @@ sorteioCoffeeMakers.atualizarLista = function(){
 
 // REFATORAR ISSO!
 sorteioCoffeeMakers.gerarListaPessoasSorteadas = function(lista){
-  let pessoasAlocadas = [];
+
   for(let i=0; i<10; i++){
     let pessoaSorteada = sorteioCoffeeMakers.sortear(lista);
-
     if(sorteioCoffeeMakers.pessoasSorteadas.map(p => p.nome).includes(pessoaSorteada.nome)){
-      if(pessoasAlocadas.length == coffechallenge.pessoas.length){ //Verifica se todos já estão alocados
-        sorteioCoffeeMakers.pessoasSorteadas.push(pessoaSorteada);
-        pessoasAlocadas = [];
-        pessoasAlocadas.push(pessoaSorteada);
+
+      if(sorteioCoffeeMakers.pessoasAlocadas.length == pessoa.pessoas.length){
+        sorteioCoffeeMakers.pessoasAlocadas = [];
+        sorteioCoffeeMakers.addPessoaEmListaDeSorteadosEAlocados(pessoaSorteada);
       }
       else{
-        pessoaSorteada = sorteioCoffeeMakers.sortear(lista);
-        while(pessoasAlocadas.map(p => p.nome).includes(pessoaSorteada.nome)){
+        do {
           pessoaSorteada = sorteioCoffeeMakers.sortear(lista);
         }
-        sorteioCoffeeMakers.pessoasSorteadas.push(pessoaSorteada);
-        pessoasAlocadas.push(pessoaSorteada);
+        while(sorteioCoffeeMakers.pessoasAlocadas.map(p => p.nome).includes(pessoaSorteada.nome));
+        sorteioCoffeeMakers.addPessoaEmListaDeSorteadosEAlocados(pessoaSorteada);
       }
     }
     else{
-      sorteioCoffeeMakers.pessoasSorteadas.push(pessoaSorteada);
-      pessoasAlocadas.push(pessoaSorteada);
+      sorteioCoffeeMakers.addPessoaEmListaDeSorteadosEAlocados(pessoaSorteada);
     }
   }
+}
+
+sorteioCoffeeMakers.addPessoaEmListaDeSorteadosEAlocados = function(pessoaSorteada){
+  sorteioCoffeeMakers.pessoasSorteadas.push(pessoaSorteada);
+  sorteioCoffeeMakers.pessoasAlocadas.push(pessoaSorteada);
 }
 
 sorteioCoffeeMakers.organizarPessoasSorteadasPorTurno = function(turno){
@@ -71,7 +73,7 @@ sorteioCoffeeMakers.organizarPessoasSorteadasPorTurno = function(turno){
 }
 
 sorteioCoffeeMakers.renderizarLista = function(){
-  sorteioCoffeeMakers.gerarListaPessoasSorteadas(coffechallenge.pessoas);
+  sorteioCoffeeMakers.gerarListaPessoasSorteadas(pessoa.pessoas);
   let pessoasManha = sorteioCoffeeMakers.organizarPessoasSorteadasPorTurno("manha");
   let pessoasTarde = sorteioCoffeeMakers.organizarPessoasSorteadasPorTurno("tarde");
 
