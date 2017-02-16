@@ -20,22 +20,17 @@ sorteioCoffeeMakers.atualizarLista = function(){
   sorteioCoffeeMakers.renderizarLista();
 }
 
-// REFATORAR ISSO!
 sorteioCoffeeMakers.gerarListaPessoasSorteadas = function(lista){
-
+  
   for(let i=0; i<10; i++){
     let pessoaSorteada = sorteioCoffeeMakers.sortear(lista);
-    if(sorteioCoffeeMakers.pessoasSorteadas.map(p => p.nome).includes(pessoaSorteada.nome)){
-
+    if(sorteioCoffeeMakers.pessoasAlocadas.map(p => p.nome).includes(pessoaSorteada.nome)){
       if(sorteioCoffeeMakers.pessoasAlocadas.length == pessoa.pessoas.length){
         sorteioCoffeeMakers.pessoasAlocadas = [];
         sorteioCoffeeMakers.addPessoaEmListaDeSorteadosEAlocados(pessoaSorteada);
       }
       else{
-        do {
-          pessoaSorteada = sorteioCoffeeMakers.sortear(lista);
-        }
-        while(sorteioCoffeeMakers.pessoasAlocadas.map(p => p.nome).includes(pessoaSorteada.nome));
+        pessoaSorteada = sorteioCoffeeMakers.buscarPessoaNaoAlocada();
         sorteioCoffeeMakers.addPessoaEmListaDeSorteadosEAlocados(pessoaSorteada);
       }
     }
@@ -43,6 +38,15 @@ sorteioCoffeeMakers.gerarListaPessoasSorteadas = function(lista){
       sorteioCoffeeMakers.addPessoaEmListaDeSorteadosEAlocados(pessoaSorteada);
     }
   }
+}
+
+sorteioCoffeeMakers.buscarPessoaNaoAlocada = function(){
+  let pessoaSorteada;
+  do {
+    pessoaSorteada = sorteioCoffeeMakers.sortear(pessoa.pessoas);
+  }
+  while(sorteioCoffeeMakers.pessoasAlocadas.map(p => p.nome).includes(pessoaSorteada.nome));
+  return pessoaSorteada;
 }
 
 sorteioCoffeeMakers.addPessoaEmListaDeSorteadosEAlocados = function(pessoaSorteada){
