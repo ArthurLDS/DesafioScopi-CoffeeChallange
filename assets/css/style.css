@@ -18,7 +18,7 @@ body{
 }
 .cabecalho-main{
   text-align: center;
-  margin: 40px 0 40px 0;
+  margin: 20px 0 40px 0;
 }
 .table-hover>tbody>tr {
   background-color: #f1f1f1;
@@ -38,4 +38,12 @@ body{
 }
 .aviso-panel-pessoas{
   margin: 20px;
+}
+
+/* Estilização Navbar */
+.navbar-link-github{
+  font-size: 19px;
+}
+.navbar{
+  border-radius: 0;
 }
