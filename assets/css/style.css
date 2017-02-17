@@ -9,6 +9,9 @@ body{
 .hide{
   display: none;
 }
+.table {
+  margin-bottom: 3px;
+}
 .container{
   margin-bottom: 20px;
 }
@@ -26,7 +29,7 @@ body{
 .table a:not(.btn), .table a:not(.btn) {
   text-decoration: none;
 }
-/* index styles */
+/* Buttons */
 .btn-gerar-coffeeMakers{
   width: 100%;
 }
@@ -36,14 +39,31 @@ body{
 .btn-gerar-coffeeMakers:hover i{
   transform: rotate(360deg);
 }
+/* Tela Sorteio */
 .aviso-panel-pessoas{
   margin: 20px;
 }
-
-/* Estilização Navbar */
+/* Navbar */
 .navbar-link-github{
   font-size: 19px;
 }
 .navbar{
   border-radius: 0;
+}
+/* Footer */
+footer{
+  color: #989898;
+  margin-top: 0px;
+  padding: 25px 0px 10px 0px;
+  text-align: center;
+}
+.icon-redes-sociais{
+  font-size: 20pt;
+}
+.social-content{
+  margin-top: 10px;
+}
+.social-content a{
+  color: #989898;
+  margin: 0 2px 0 2px;
 }
