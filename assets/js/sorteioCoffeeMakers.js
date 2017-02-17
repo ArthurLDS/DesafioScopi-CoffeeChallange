@@ -17,6 +17,7 @@ sorteioCoffeeMakers.sortearPessoa = function(lista){
 sorteioCoffeeMakers.atualizarLista = function(){
   sorteioCoffeeMakers.$listaCoffeMakers.html("");
   sorteioCoffeeMakers.pessoasSorteadas = [];
+  sorteioCoffeeMakers.pessoasAlocadas  = [];
   sorteioCoffeeMakers.renderizarLista();
 }
 
