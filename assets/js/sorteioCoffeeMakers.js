@@ -5,6 +5,7 @@ $(function(){
   sorteioCoffeeMakers.pessoasAlocadas  = [];
   sorteioCoffeeMakers.pessoasSorteadas = [];
   sorteioCoffeeMakers.$listaCoffeMakers = $('#listPessoasSorteadas');
+  sorteioCoffeeMakers.renderizarDataDoSorteio();
   sorteioCoffeeMakers.renderizarLista();
 });
 
@@ -75,6 +76,12 @@ sorteioCoffeeMakers.organizarPessoasSorteadasPorTurno = function(turno){
     break;
   }
   return lista;
+}
+
+sorteioCoffeeMakers.renderizarDataDoSorteio = function(){
+  let agora = new Date();
+  let mes = agora.getMonth() + 1 < 10 ?  "0" + eval(agora.getMonth() + 1) : eval(agora.getMonth() + 1);
+  $("#sorteados-date").text(agora.getDate() + "/" + mes + "/" + agora.getFullYear());
 }
 
 sorteioCoffeeMakers.renderizarLista = function(){
