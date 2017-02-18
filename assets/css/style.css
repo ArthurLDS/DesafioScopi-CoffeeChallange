@@ -12,9 +12,6 @@ body{
 .table {
   margin-bottom: 3px;
 }
-.container{
-  margin-bottom: 20px;
-}
 .centered{
   margin: 0 auto !important;
   float: none !important;
@@ -52,18 +49,23 @@ body{
 }
 /* Footer */
 footer{
+  font-size: 14px;
   color: #989898;
-  margin-top: 0px;
+  margin: 0 0 10px 0;
   padding: 25px 0px 10px 0px;
   text-align: center;
 }
 .icon-redes-sociais{
-  font-size: 20pt;
+  font-size: 18pt;
 }
 .social-content{
   margin-top: 10px;
 }
 .social-content a{
+  transition: .4s;
   color: #989898;
-  margin: 0 2px 0 2px;
+  margin: 0 3px 0 2px;
+}
+.social-content a:hover{
+  color: #18bc9c;
 }
