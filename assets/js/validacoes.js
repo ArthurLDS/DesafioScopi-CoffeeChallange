@@ -62,7 +62,7 @@ validacao.validarListaPessoas = function(){
 }
 
 validacao.notificarErroListaPessoas = function(mostrar){
-  let linkPageSorteio = "sorteioCoffeeMakersList.html";
+  let linkPageSorteio = "sorteioCoffeeMakers.html";
   if(mostrar){
     validacao.$notificacaoNenhumaPessoa.show();
     pessoa.$contentPessoas.hide();
