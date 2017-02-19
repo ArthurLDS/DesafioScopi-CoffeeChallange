@@ -1,13 +1,18 @@
+// CoffeeMakers == Fazedores de café
 var sorteioCoffeeMakers = {};
 
 $(function(){
+  sorteioCoffeeMakers.iniciar();
+});
+
+sorteioCoffeeMakers.iniciar = function(){
   sorteioCoffeeMakers.diasSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
   sorteioCoffeeMakers.pessoasAlocadas  = [];
   sorteioCoffeeMakers.pessoasSorteadas = [];
   sorteioCoffeeMakers.$listaCoffeMakers = $('#listPessoasSorteadas');
   sorteioCoffeeMakers.renderizarDataDoSorteio();
   sorteioCoffeeMakers.renderizarLista();
-});
+}
 
 sorteioCoffeeMakers.sortearPessoa = function(lista){
   let numSorteado = Math.floor(Math.random() * lista.length);
@@ -27,7 +32,7 @@ sorteioCoffeeMakers.gerarListaPessoasSorteadas = function(lista){
   for(let i=0; i<10; i++){
     let pessoaSorteada = sorteioCoffeeMakers.sortearPessoa(lista);
     if(sorteioCoffeeMakers.pessoasAlocadas.map(p => p.nome).includes(pessoaSorteada.nome)){
-      if(sorteioCoffeeMakers.pessoasAlocadas.length == pessoa.pessoas.length){
+      if(sorteioCoffeeMakers.pessoasAlocadas.length === pessoa.pessoas.length){
         sorteioCoffeeMakers.pessoasAlocadas = [];
         sorteioCoffeeMakers.addPessoaEmListaDeSorteadosEAlocados(pessoaSorteada);
       }
@@ -92,7 +97,6 @@ sorteioCoffeeMakers.renderizarLista = function(){
   for(let i=0; i<5; i++){
     let pessoaManha = pessoasManha[i];
     let pessoaTarde = pessoasTarde[i];
-
     sorteioCoffeeMakers.$listaCoffeMakers.append("<tr><th>" + sorteioCoffeeMakers.diasSemana[i] + "</th>  <td>" + pessoaManha.nome + "</td>  <td>" + pessoaTarde.nome + "</td></tr>");
   }
 
