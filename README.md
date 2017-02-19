@@ -1,4 +1,4 @@
-<img style="heigth: 100px;" src="https://pbs.twimg.com/profile_images/606810564510281728/thqm81Yv.jpg" alt="img-scopi"/>
+![](https://pbs.twimg.com/profile_images/606810564510281728/thqm81Yv.jpg | heigth=100)
 <h2>CoffeeChallenge</h2>
 <hr>
 <p>Gerador automático de relação das pessoas encarregadas de preparar o café para a semana.</p>
