@@ -45,7 +45,7 @@ pessoa.adicionar = function(){
 pessoa.listarPessoas = function(){
   if(validacao.validarListaPessoas()){
     pessoa.$listaPessoas.html("");
-    for(var i in pessoa.pessoas){
+    for(let i in pessoa.pessoas){
       let pessoaAtual = JSON.parse(pessoa.pessoas[i]);
       pessoa.$listaPessoas.append("<tr><td>"+ eval(parseInt(i) + 1) +"</td><td>"+pessoaAtual.nome+"</td><td><a class='pull-right' href='javascript:pessoa.excluir("+i+")'><i class='fa fa-trash-o' aria-hidden='true'></i> Excluir</a></td></tr>");
     }

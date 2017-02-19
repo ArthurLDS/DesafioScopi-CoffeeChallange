@@ -1,4 +1,4 @@
-var validacao = {}
+var validacao = {};
 
 $(function(){
   validacao.$notificacaoNenhumaPessoa = $('#notificacao-nenhuma-pessoa');
@@ -26,7 +26,7 @@ validacao.validarNomePessoa = function(){
 }
 
 validacao.nomePessoaExistencia = function(){
-  for(var i in pessoa.pessoas){
+  for(let i in pessoa.pessoas){
     if(JSON.parse(pessoa.pessoas[i]).nome === pessoa.$txtNome.val()){
       validacao.notificarErroNomePessoa(true, "Este nome já existe!");
       return false;
