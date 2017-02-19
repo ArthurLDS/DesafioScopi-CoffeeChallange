@@ -26,7 +26,11 @@ pessoa.carregarPessoas = function(){
 pessoa.configurarBtns = function(){
     pessoa.$btnGerarCoffeMakers = $("#btn-gerar-coffeeMakers");
     pessoa.$btnCadastrarPessoa  = $('#btnCadastrarPessoa');
-    pessoa.$btnCadastrarPessoa.click(pessoa.adicionar);
+    
+    pessoa.$btnCadastrarPessoa.click(function(event){
+      pessoa.adicionar();
+      event.preventDefault();
+    });
 }
 
 pessoa.adicionar = function(){
